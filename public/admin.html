@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css" />
+  </head>
+
+  <body>
+    <main class="container">
+      <header>
+        <div>
+          <p>MY BANKING APP</p>
+          <h1>Admin dashboard</h1>
+        </div>
+
+        <button id="logout-button" type="button">Sign out</button>
+      </header>
+
+      <p id="message"></p>
+
+      <section class="stats">
+        <article>
+          <span>Customers</span>
+          <strong id="user-count">0</strong>
+        </article>
+
+        <article>
+          <span>Transactions</span>
+          <strong id="transaction-count">0</strong>
+        </article>
+      </section>
+
+      <section class="panel">
+        <h2>Customer accounts</h2>
+
+        <input
+          id="user-search"
+          type="search"
+          placeholder="Search name or email"
+        />
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Balance</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+
+            <tbody id="users-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Latest transactions</h2>
+
+        <select id="transaction-filter">
+          <option value="all">All transactions</option>
+          <option value="deposit">Deposits</option>
+          <option value="withdrawal">Withdrawals</option>
+          <option value="transfer_sent">Transfers sent</option>
+          <option value="transfer_received">Transfers received</option>
+        </select>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Customer</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Description</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+
+            <tbody id="transactions-table"></tbody>
+          </table>
+        </div>
+
+        <section class="panel">
+          <h2>Admin activity log</h2>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Administrator</th>
+                  <th>Customer</th>
+                  <th>Action</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+
+              <tbody id="audit-table"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <div class="pagination">
+          <button id="previous-button" type="button">Previous</button>
+          <span id="page-info"></span>
+          <button id="next-button" type="button">Next</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="admin.js"></script>
+  </body>
+</html>

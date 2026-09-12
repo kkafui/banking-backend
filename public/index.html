@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Banking App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <main class="app-shell">
+      <section class="auth-card" id="login-section">
+        <p class="eyebrow">MY BANKING APP</p>
+        <h1>Welcome back</h1>
+        <p class="muted">Sign in to manage your money.</p>
+
+        <form id="login-form">
+          <label for="email">Email address</label>
+          <input
+            id="email"
+            type="email"
+            placeholder="you@example.com"
+            required
+          />
+
+          <label for="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            placeholder="••••••••"
+            required
+          />
+
+          <button type="submit">Sign in</button>
+        </form>
+
+        <button id="show-register-button" class="text-button" type="button">
+          New here? Create an account
+        </button>
+
+        <p id="login-message" class="message"></p>
+      </section>
+
+      <section class="auth-card" id="register-section" hidden>
+        <p class="eyebrow">MY BANKING APP</p>
+        <h1>Create account</h1>
+        <p class="muted">Your password must be at least 8 characters.</p>
+
+        <form id="register-form">
+          <label for="register-name">Full name</label>
+          <input id="register-name" type="text" required />
+
+          <label for="register-email">Email address</label>
+          <input id="register-email" type="email" required />
+
+          <label for="register-password">Password</label>
+          <input
+            id="register-password"
+            type="password"
+            minlength="8"
+            required
+          />
+
+          <label for="opening-balance">Opening balance</label>
+          <input
+            id="opening-balance"
+            type="number"
+            min="0"
+            step="0.01"
+            value="0"
+            required
+          />
+
+          <button type="submit">Create account</button>
+        </form>
+
+        <button id="show-login-button" class="text-button" type="button">
+          Back to sign in
+        </button>
+
+        <p id="register-message" class="message"></p>
+      </section>
+
+      <section id="dashboard-section" hidden>
+        <p id="account-status" class="frozen-banner" hidden></p>
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">MY BANKING APP</p>
+            <h1>Hello, <span id="customer-name"></span></h1>
+          </div>
+
+          <button id="logout-button" class="outline-button" type="button">
+            Sign out
+          </button>
+        </header>
+
+        <section class="balance-card">
+          <p>Available balance</p>
+          <strong id="balance">GH₵0.00</strong>
+        </section>
+
+        <section class="summary-grid">
+          <article>
+            <span>Total deposited</span>
+            <strong id="total-deposits">GH₵0.00</strong>
+          </article>
+          <article>
+            <span>Total withdrawn</span>
+            <strong id="total-withdrawals">GH₵0.00</strong>
+          </article>
+          <article>
+            <span>Total sent</span>
+            <strong id="total-sent">GH₵0.00</strong>
+          </article>
+          <article>
+            <span>Total received</span>
+            <strong id="total-received">GH₵0.00</strong>
+          </article>
+        </section>
+
+        <section class="content-grid">
+          <section class="panel">
+            <h2>Quick actions</h2>
+
+            <form id="deposit-form">
+              <h3>Deposit</h3>
+              <input
+                id="deposit-amount"
+                type="number"
+                min="0.01"
+                step="0.01"
+                placeholder="Amount"
+                required
+              />
+              <input
+                id="deposit-description"
+                type="text"
+                value="Online deposit"
+                placeholder="Description"
+                required
+              />
+              <button type="submit">Add money</button>
+            </form>
+
+            <form id="withdraw-form">
+              <h3>Withdraw</h3>
+              <input
+                id="withdraw-amount"
+                type="number"
+                min="0.01"
+                step="0.01"
+                placeholder="Amount"
+                required
+              />
+              <input
+                id="withdraw-description"
+                type="text"
+                value="Online withdrawal"
+                placeholder="Description"
+                required
+              />
+              <button type="submit">Withdraw money</button>
+            </form>
+
+            <form id="transfer-form">
+              <h3>Send money</h3>
+              <input
+                id="receiver-email"
+                type="email"
+                placeholder="Recipient email address"
+                required
+              />
+              <input
+                id="transfer-amount"
+                type="number"
+                min="0.01"
+                step="0.01"
+                placeholder="Amount"
+                required
+              />
+              <input
+                id="transfer-description"
+                type="text"
+                value="Online transfer"
+                placeholder="Description"
+                required
+              />
+              <button type="submit">Send transfer</button>
+            </form>
+
+            <form id="password-form">
+              <h3>Change password</h3>
+              <input
+                id="current-password"
+                type="password"
+                placeholder="Current password"
+                required
+              />
+              <input
+                id="new-password"
+                type="password"
+                minlength="8"
+                placeholder="New password"
+                required
+              />
+              <button type="submit">Update password</button>
+            </form>
+
+            <p id="action-message" class="message"></p>
+          </section>
+
+          <section class="panel transactions-panel">
+            <div class="panel-heading">
+              <h2>Recent transactions</h2>
+              <span id="transaction-count"></span>
+            </div>
+
+            <button id="download-statement-button" type="button">
+              Download CSV statement
+            </button>
+            
+            <div id="transaction-list"></div>
+          </section>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
