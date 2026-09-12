@@ -41,6 +41,8 @@ app.get("/api/health", async (req, res) => {
       databaseTime: result.rows[0].now,
     });
   } catch (error) {
+    console.error("HEALTH CHECK ERROR:", error); // TEMP — remove after debugging
+
     res.status(500).json({
       message: "Database connection failed",
     });
